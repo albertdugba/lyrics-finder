@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem;
+}
+
+li {
+  list-style: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 5px;
+}
+
+.nav-items {
+  display: flex;
+}
