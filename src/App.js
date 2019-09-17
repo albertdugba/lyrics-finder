@@ -1,43 +1,27 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import HomePage from "./components/Pages/HomePage";
-import SearchParams from "./components/SearchParams";
-import Movies from "./components/Movies";
+import { MusicProvider } from "./components/context";
+import NavBar from "./components/layouts/NavBar";
+import Index from "./components/layouts/Index";
+import Lyrics from "./components/tracks/Lyrics";
 
 class App extends Component {
-  state = {
-    movieAPi: "4be3dca1c64c2fb77f30770cd942a1e2",
-    movies: []
-  };
-
-  componentDidMount() {
-    this.handleMoviesSearch();
-  }
-
-  handleMoviesSearch = movie => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?query=${movie}&api_key=${this.state.movieAPi}`
-      )
-      .then(data => this.setState({ movies: data.data.results }))
-      .catch(error =>
-        console.log(
-          error,
-          "oops!,something went wrong,please check our connection and try again"
-        )
-      );
-  };
-
   render() {
-    const { movies } = this.state;
     return (
-      <div>
-        <HomePage />
-        <SearchParams searchMoviesDB={this.handleMoviesSearch} />
-
-        <Movies movieData={movies} />
-      </div>
+      <MusicProvider>
+        <Router>
+          <React.Fragment>
+            <NavBar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Index} />
+                <Route exact path="/lyrics/track/:id" component={Lyrics} />
+              </Switch>
+            </div>
+          </React.Fragment>
+        </Router>
+      </MusicProvider>
     );
   }
 }
