@@ -5,6 +5,8 @@ import { MusicProvider } from "./components/context";
 import NavBar from "./components/layouts/NavBar";
 import Index from "./components/layouts/Index";
 import Lyrics from "./components/tracks/Lyrics";
+import Progress from "./components/layouts/Progress";
+import Scroll from "./components/layouts/Scroll";
 
 class App extends Component {
   render() {
@@ -12,6 +14,8 @@ class App extends Component {
       <MusicProvider>
         <Router>
           <React.Fragment>
+            <Progress scroll="70%" />
+            <Scroll />
             <NavBar />
             <div className="container">
               <Switch>
