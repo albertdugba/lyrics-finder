@@ -8,7 +8,6 @@ const Tracks = () => {
     <MusicConsumer>
       {value => {
         const { track_list, heading } = value;
-        console.log("Tracks loaded from:", track_list);
         if (track_list === undefined || track_list.length === 0) {
           return <Spinner />;
         } else {

@@ -31,6 +31,7 @@ class Lyrics extends Component {
   render() {
     const { tracks, lyrics } = this.state;
     console.log(tracks);
+    console.log(lyrics);
     if (
       tracks === undefined ||
       lyrics === undefined ||
@@ -60,21 +61,22 @@ class Lyrics extends Component {
               <strong>Album ID:</strong>
               {tracks.album_id}
             </li>
-            <li className="list-group-item">
+            {/* <li className="list-group-item">
               <strong>Song Genre:</strong>
-              {
-                tracks.primary_genres.music_genre_list[0].music_genre
-                  .music_genre_name
-              }
+              {tracks.primary_genres.music_genres_list.length > 0
+                ? tracks.primary_genres.music_genres_list[0].music_genre
+                    .music_genre_name
+                : "no genre spcified"}
+            </li> */}
+
+            <li className="list-group-item">
+              <strong>{tracks.explicit === 0 ? "No" : "Yes"}</strong>
             </li>
 
-            <div className="list-group-item">
-              <strong>{tracks.explicit === 0 ? "No" : "Yes"}</strong>
-            </div>
-            <div className="list-group-item">
+            <li className="list-group-item">
               <strong>Release Date: </strong>
               <Moment format="DD/MM/YYYY">{tracks.updated_time}</Moment>
-            </div>
+            </li>
           </div>
         </React.Fragment>
       );

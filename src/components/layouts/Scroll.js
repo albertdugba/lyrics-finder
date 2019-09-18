@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../App.css";
+import Progress from "./Progress";
 
 class Scroll extends Component {
   state = {
@@ -35,13 +36,17 @@ class Scroll extends Component {
 
     const totalDocScrollLength = docHeight - windowHeight;
     const scrollPosition = Math.floor((scrollTop / totalDocScrollLength) * 100);
-    console.log(scrollPosition);
+    // console.log(scrollPosition);
 
     this.setState({ scrollPosition });
   };
 
   render() {
-    return <header></header>;
+    return (
+      <header>
+        <Progress scroll={this.state.scrollPosition} />
+      </header>
+    );
   }
 }
 

@@ -14,7 +14,7 @@ class App extends Component {
       <MusicProvider>
         <Router>
           <React.Fragment>
-            <Progress scroll="70%" />
+            <Progress scroll={this.props.scroll + "%"} />
             <Scroll />
             <NavBar />
             <div className="container">

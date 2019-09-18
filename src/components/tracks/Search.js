@@ -7,7 +7,6 @@ import { MusicConsumer } from "../context";
 class Search extends Component {
   state = {
     trackTitle: "",
-    loading: false,
     apiURL: "https://api.musixmatch.com/ws/1.1/",
     apiKey: "d73f61ebc30a9ca47af521ec4c8bb5c8"
   };
@@ -26,13 +25,15 @@ class Search extends Component {
         `https://cors-anywhere.herokuapp.com/${this.state.apiURL}track.search?q_track=${this.state.trackTitle} bieber&page_size=10&page=1&s_track_rating=desc&apikey=${this.state.apiKey}`
       )
       .then(res => {
-        // console.log(res.data);
         dispatch({
           type: "SEARCH_TRACK",
-          payload: res.data.message.body.track_list
+          payload: res.data.message.body.track_list,
+          loading: false
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        throw error;
+      });
   };
   render() {
     return (
