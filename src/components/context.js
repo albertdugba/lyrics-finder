@@ -32,7 +32,6 @@ export class MusicProvider extends Component {
         `https://cors-anywhere.herokuapp.com/${this.state.apiURL}chart.tracks.get?chart_name=top&page=1&page_size=10&country=ng&f_has_lyrics=1&apikey=${this.state.apiKey}`
       )
       .then(res => {
-        // console.log(res.data);
         this.setState({ track_list: res.data.message.body.track_list });
       })
       .catch(error => console.log(error));
